@@ -26,13 +26,15 @@ if (imageUpload) {
         }).then((response) => {
             if (!response.ok) {
                 alert('이미지 업로드에 실패했습니다.');
-                return;
+                throw new Error();
             }
-
-            const data = response.json();
-            document.getElementById('image-url').value = data.imageUrl;
-            displayImagePreview(data.imageUrl);
-        });
+            return response.json();
+        })
+            .then((data) => {
+                document.getElementById('image-url').value = data.imageUrl;
+                displayImagePreview(data.imageUrl);
+            })
+            .catch((e) => console.error(e));
     });
 }
 
