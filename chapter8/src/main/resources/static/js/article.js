@@ -110,7 +110,8 @@ if (createButton) {
             },
             body: JSON.stringify({
                 title: document.getElementById('title').value,
-                content: document.getElementById('content').value
+                content: document.getElementById('content').value,
+                imageUrl: document.getElementById('image-url').value
             })
         })
             .then(() => {
