@@ -103,9 +103,6 @@ if (getSuggestionButton) {
             body: body
         })
             .then(response => {
-                if (!response.ok) {
-                    throw new Error('AI 요청 실패');
-                }
                 return response.json();
             })
             .then(data => {
