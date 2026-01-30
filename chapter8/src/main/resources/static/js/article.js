@@ -1,3 +1,61 @@
+window.addEventListener('DOMContentLoaded', () => {
+    const imageUrl = document.getElementById('image-url')?.value;
+    if (imageUrl) {
+        displayImagePreview(imageUrl);
+    }
+});
+
+// 이미지 업로드 버튼
+const imageUpload = document.getElementById('image-upload');
+if (imageUpload) {
+    imageUpload.addEventListener('change', async (event) => {
+        const file = event.target.files[0];
+        if (!file) return;
+
+        if (!file.type.startsWith('image/')) {
+            alert('이미지 파일만 업로드 가능합니다.');
+            return;
+        }
+
+        const formData = new FormData();
+        formData.append('file', file);
+
+        fetch('/api/upload', {
+            method: 'POST',
+            body: formData
+        }).then((response) => {
+            if (!response.ok) {
+                alert('이미지 업로드에 실패했습니다.');
+                return;
+            }
+
+            const data = response.json();
+            document.getElementById('image-url').value = data.imageUrl;
+            displayImagePreview(data.imageUrl);
+        });
+    });
+}
+
+function displayImagePreview(imageUrl) {
+    const preview = document.getElementById('image-preview');
+    const previewImg = document.getElementById('preview-img');
+
+    if (preview && previewImg && imageUrl) {
+        previewImg.src = imageUrl;
+        preview.style.display = 'block';
+    }
+}
+
+// 이미지 제거 버튼
+const removeImageButton = document.getElementById('remove-image-btn');
+if (removeImageButton) {
+    removeImageButton.addEventListener('click', () => {
+        document.getElementById('image-url').value = '';
+        document.getElementById('image-upload').value = '';
+        document.getElementById('image-preview').style.display = 'none';
+    });
+}
+
 // 삭제 기능
 const deleteButton = document.getElementById('delete-btn');
 
@@ -29,7 +87,8 @@ if (modifyButton) {
             },
             body: JSON.stringify({
                 title: document.getElementById('title').value,
-                content: document.getElementById('content').value
+                content: document.getElementById('content').value,
+                imageUrl: document.getElementById('image-url').value
             })
         })
             .then(() => {
