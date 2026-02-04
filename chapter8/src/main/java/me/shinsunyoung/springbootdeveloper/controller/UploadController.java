@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
+
 @RestController
 public class UploadController {
 
@@ -19,8 +21,11 @@ public class UploadController {
     }
 
     @PostMapping("/api/upload")
-    public ResponseEntity<UploadResponse> uploadFile(@RequestParam("file") MultipartFile file) {
+    public ResponseEntity<UploadResponse> uploadFile(@RequestParam("file") MultipartFile file) throws IOException {
         return ResponseEntity.status(HttpStatus.CREATED)
-                .body(fileStorageService.store(file));
+                .body(fileStorageService.store(
+                        file.getBytes(),
+                        file.getOriginalFilename()
+                ));
     }
 }
