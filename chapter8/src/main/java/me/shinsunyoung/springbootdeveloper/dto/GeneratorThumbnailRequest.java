@@ -2,7 +2,7 @@ package me.shinsunyoung.springbootdeveloper.dto;
 
 import java.util.Map;
 
-public record AiThumbnailRequest(
+public record GeneratorThumbnailRequest(
         String title,
         String content
 ) {
