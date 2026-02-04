@@ -58,6 +58,49 @@ if (removeImageButton) {
     });
 }
 
+// AI 썸네일 생성 버튼
+const aiThumbnailButton = document.getElementById('ai-thumbnail-btn');
+if (aiThumbnailButton) {
+    aiThumbnailButton.addEventListener('click', async () => {
+        const title = document.getElementById('title').value;
+        const content = document.getElementById('content').value;
+
+        if (!title.trim() && !content.trim()) {
+            alert('제목이나 내용을 먼저 입력해주세요.');
+            return;
+        }
+
+        const loadingDiv = document.getElementById('ai-thumbnail-loading');
+        loadingDiv.style.display = 'block';
+        aiThumbnailButton.disabled = true;
+
+        fetch('/api/generate-thumbnail', {
+            method: 'POST',
+            body: JSON.stringify({
+                title: title,
+                content: content
+            }),
+            headers: {
+                Authorization: 'Bearer ' + localStorage.getItem('access_token'),
+                'Content-Type': 'application/json',
+            },
+        }).then((response) => {
+            if (!response.ok) {
+                alert('썸네일 생성에 실패했습니다.');
+                throw new Error();
+            }
+            return response.json();
+        }).then((data) => {
+            document.getElementById('image-url').value = data.imageUrl;
+            displayImagePreview(data.imageUrl);
+        }).finally(() => {
+            loadingDiv.style.display = 'none';
+            aiThumbnailButton.disabled = false;
+        });
+    });
+}
+
+
 // 삭제 기능
 const deleteButton = document.getElementById('delete-btn');
 
