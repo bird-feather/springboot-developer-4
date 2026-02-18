@@ -1,10 +1,11 @@
-package me.shinsunyoung.springbootdeveloper.config.jwt;
+package me.shinsunyoung.springbootdeveloper.jwt;
 
 import io.jsonwebtoken.Header;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import lombok.Builder;
 import lombok.Getter;
+import me.shinsunyoung.springbootdeveloper.config.jwt.JwtProperties;
 
 import java.time.Duration;
 import java.util.Date;

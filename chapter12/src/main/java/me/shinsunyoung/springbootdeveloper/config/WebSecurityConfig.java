@@ -1,4 +1,4 @@
-//package me.shinsunyoung.springbootdeveloper.config;
+package me.shinsunyoung.springbootdeveloper.config;//package me.shinsunyoung.springbootdeveloper.config;
 //
 //import lombok.RequiredArgsConstructor;
 //import org.springframework.context.annotation.Bean;

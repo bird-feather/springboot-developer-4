@@ -8,6 +8,9 @@ spring:
   h2:
     console:
       enabled: true
+  ai:
+    openai:
+      api-key: ...
   security:
     oauth2:
       client:
@@ -21,3 +24,8 @@ spring:
 jwt:
   issuer: ajufresh@gmail.com
   secret_key: study-springboot
+cloud:
+  aws:
+    region: ap-northeast-2
+    s3:
+      bucket: springboot-developer-ajufresh

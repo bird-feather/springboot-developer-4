@@ -14,7 +14,6 @@ import java.util.List;
 @RequiredArgsConstructor
 @Service
 public class BlogService {
-
     private final BlogRepository blogRepository;
 
     public Article save(AddArticleRequest request, String userName) {
@@ -27,7 +26,7 @@ public class BlogService {
 
     public Article findById(long id) {
         return blogRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("not found : " + id));
+                .orElseThrow(() -> new IllegalArgumentException("not found: " + id));
     }
 
     public void delete(long id) {
@@ -44,10 +43,11 @@ public class BlogService {
                 .orElseThrow(() -> new IllegalArgumentException("not found : " + id));
 
         authorizeArticleAuthor(article);
-        article.update(request.getTitle(), request.getContent());
+        article.update(request.getTitle(), request.getContent(), request.getImageUrl());
 
         return article;
     }
+
 
     private static void authorizeArticleAuthor(Article article) {
         String userName = SecurityContextHolder.getContext().getAuthentication().getName();
@@ -55,5 +55,4 @@ public class BlogService {
             throw new IllegalArgumentException("not authorized");
         }
     }
-
 }

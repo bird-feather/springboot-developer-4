@@ -21,8 +21,11 @@ if (imageUpload) {
         formData.append('file', file);
 
         fetch('/api/upload', {
-            method: 'POST',
-            body: formData
+          method: 'POST',
+          body: formData,
+          headers: {
+            Authorization: 'Bearer ' + localStorage.getItem('access_token'),
+          },
         }).then((response) => {
             if (!response.ok) {
                 alert('이미지 업로드에 실패했습니다.');
@@ -217,6 +220,7 @@ if (modifyButton) {
 
         body = JSON.stringify({
             title: document.getElementById('title').value,
+            imageUrl: document.getElementById('image-url').value,
             content: document.getElementById('content').value
         })
 
@@ -241,6 +245,7 @@ if (createButton) {
     createButton.addEventListener('click', event => {
         body = JSON.stringify({
             title: document.getElementById('title').value,
+            imageUrl: document.getElementById('image-url').value,
             content: document.getElementById('content').value
         });
         function success() {
