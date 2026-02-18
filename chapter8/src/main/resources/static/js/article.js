@@ -74,7 +74,7 @@ if (aiThumbnailButton) {
         loadingDiv.style.display = 'block';
         aiThumbnailButton.disabled = true;
 
-        fetch('/api/generate-thumbnail', {
+        fetch('/api/ai-thumbnails', {
             method: 'POST',
             body: JSON.stringify({
                 title: title,
@@ -199,7 +199,7 @@ if (getSuggestionButton) {
             question: question
         });
 
-        fetch('/api/writing-assist', {
+        fetch('/api/ai-suggestions', {
             method: 'POST',
             headers: {
                 Authorization: 'Bearer ' + localStorage.getItem('access_token'),

@@ -59,7 +59,7 @@ public class BlogApiController {
                 .body(updatedArticle);
     }
 
-    @PostMapping("/api/writing-assist")
+    @PostMapping("/api/ai-suggestions")
     public ResponseEntity<WritingSuggestionsResponse> writingAssist(@RequestBody WritingSuggestionRequest request) {
         WritingSuggestionsResponse response = writingAssistantService.getWritingAssist(request);
 
@@ -67,7 +67,7 @@ public class BlogApiController {
                 .body(response);
     }
 
-    @PostMapping("/api/generate-thumbnail")
+    @PostMapping("/api/ai-thumbnails")
     public ResponseEntity<GeneratorThumbnailResponse> thumbnailGenerator(@RequestBody GeneratorThumbnailRequest request) {
         GeneratorThumbnailResponse response = thumbnailGeneratorService.generateThumbnail(request);
 
