@@ -1,6 +1,5 @@
 package me.shinsunyoung.springbootdeveloper.controller;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import me.shinsunyoung.springbootdeveloper.domain.Article;
 import me.shinsunyoung.springbootdeveloper.dto.AddArticleRequest;
 import me.shinsunyoung.springbootdeveloper.dto.UpdateArticleRequest;
@@ -16,6 +15,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
+import tools.jackson.databind.ObjectMapper;
 
 import java.util.List;
 
@@ -153,8 +153,7 @@ class BlogApiControllerTest {
                 .build());
         final String newTitle = "new title";
         final String newContent = "new content";
-        UpdateArticleRequest request = new UpdateArticleRequest(newTitle,
-                newContent);
+        UpdateArticleRequest request = new UpdateArticleRequest(newTitle, newContent);
 
         // when
         ResultActions result = mockMvc.perform(put(url, savedArticle.getId())
