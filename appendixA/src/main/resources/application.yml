@@ -1,0 +1,31 @@
+spring:
+  jpa:
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+    defer-datasource-initialization: true
+  h2:
+    console:
+      enabled: true
+  ai:
+    openai:
+      api-key: ...
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: 663642212621...
+            client-secret: GOCSPX-...
+            scope:
+              - email
+              - profile
+jwt:
+  issuer: ajufresh@gmail.com
+  secret_key: study-springboot
+cloud:
+  aws:
+    region: ap-northeast-2
+    s3:
+      bucket: springboot-developer-ajufresh
