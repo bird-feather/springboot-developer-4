@@ -11,6 +11,9 @@ spring:
   h2:
     console:
       enabled: true
+  ai:
+    openai:
+      api-key: ...
 jwt:
   issuer: ajufresh@gmail.com
   secret_key: study-springboot
