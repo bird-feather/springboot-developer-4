@@ -11,13 +11,16 @@ spring:
   h2:
     console:
       enabled: true
+  ai:
+    openai:
+      api-key: ...
   security:
     oauth2:
       client:
         registration:
           google:
-            client-id: 663642212621...
-            client-secret: GOCSPX-...
+            client-id: 66364221262...
+            client-secret: GOCSPX...
             scope:
               - email
               - profile

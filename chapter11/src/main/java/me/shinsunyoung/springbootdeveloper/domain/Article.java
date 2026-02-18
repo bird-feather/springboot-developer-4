@@ -27,7 +27,11 @@ public class Article {
     @Column(name = "content", nullable = false)
     private String content;
 
+    @Column(name = "image_url")
+    private String imageUrl;
 
+    @Column(name = "author", nullable = false)
+    private String author;
 
     @CreatedDate
     @Column(name = "created_at")
@@ -37,18 +41,17 @@ public class Article {
     @Column(name = "updated_at")
     private LocalDateTime updatedAt;
 
-    @Column(name = "author", nullable = false)
-    private String author;
-
     @Builder
-    public Article(String author, String title, String content) {
+    public Article(String author, String title, String content, String imageUrl) {
         this.author = author;
         this.title = title;
         this.content = content;
+        this.imageUrl = imageUrl;
     }
 
-    public void update(String title, String content) {
+    public void update(String title, String content, String imageUrl) {
         this.title = title;
         this.content = content;
+        this.imageUrl = imageUrl;
     }
 }

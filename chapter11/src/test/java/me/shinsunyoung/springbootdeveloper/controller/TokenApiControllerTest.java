@@ -1,10 +1,10 @@
 package me.shinsunyoung.springbootdeveloper.controller;
 
-import me.shinsunyoung.springbootdeveloper.config.jwt.JwtFactory;
 import me.shinsunyoung.springbootdeveloper.config.jwt.JwtProperties;
 import me.shinsunyoung.springbootdeveloper.domain.RefreshToken;
 import me.shinsunyoung.springbootdeveloper.domain.User;
 import me.shinsunyoung.springbootdeveloper.dto.CreateAccessTokenRequest;
+import me.shinsunyoung.springbootdeveloper.jwt.JwtFactory;
 import me.shinsunyoung.springbootdeveloper.repository.RefreshTokenRepository;
 import me.shinsunyoung.springbootdeveloper.repository.UserRepository;
 import org.junit.jupiter.api.BeforeEach;
