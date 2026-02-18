@@ -11,10 +11,13 @@ import me.shinsunyoung.springbootdeveloper.domain.Article;
 public class AddArticleRequest {
     private String title;
     private String content;
+    private String imageUrl;
+
     public Article toEntity() {
         return Article.builder()
                 .title(title)
                 .content(content)
+                .imageUrl(imageUrl)
                 .build();
     }
 }
